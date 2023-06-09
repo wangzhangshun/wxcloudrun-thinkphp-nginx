@@ -9,20 +9,20 @@ RUN apt-get -y install telnet
 RUN apt-get -y install procps
 
 ## 复制代码
-ADD ./ /var/server
+ADD ./ /var/www
 
 # 设置容器启动后的默认运行目录
-WORKDIR /var/server
+WORKDIR /var/www
 
 # 替换nginx配置
-RUN cp /var/server/nginx.conf /etc/nginx/conf.d/default.conf \
+RUN cp /var/www/nginx.conf /etc/nginx/conf.d/default.conf \
     && mkdir -p /run/nginx \
-    && chmod -R 777 /var/server/runtime
+    && chmod -R 777 /var/www/runtime
 
 RUN rm /etc/nginx/sites-enabled/default
 # 默认入口命令
 ENTRYPOINT ["/entrypoint.sh"]
-RUN chmod 700 /var/server/run.sh
-ENTRYPOINT ["/var/server/run.sh"]
+RUN chmod 700 /var/www/run.sh
+ENTRYPOINT ["/var/www/run.sh"]
 
 EXPOSE 80
