@@ -21,7 +21,7 @@ RUN cp /var/www/nginx.conf /etc/nginx/conf.d/default.conf \
 
 RUN rm /etc/nginx/sites-enabled/default
 # 默认入口命令
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
 RUN chmod 700 /var/www/run.sh
 ENTRYPOINT ["/var/www/run.sh"]
 
