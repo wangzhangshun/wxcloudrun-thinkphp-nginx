@@ -7,6 +7,7 @@ RUN apt-get install --reinstall ca-certificates
 RUN apt-get -y install nginx
 RUN apt-get -y install telnet
 RUN apt-get -y install procps
+RUN apt-get -y install redis
 
 ## 复制代码
 ADD ./ /var/www
